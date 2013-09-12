@@ -49,8 +49,8 @@ class data():
             wind_U.append( -float(data[6]) * np.sin(float(data[5]) * np.pi/180.) )
             wind_V.append( -float(data[6]) * np.cos(float(data[5]) * np.pi/180.) )
 
-        dates = np.array(dates)
-        press = np.array(press)
+        dates  = np.array(dates)
+        press  = np.array(press)
         wind_U = np.array(wind_U)
         wind_V = np.array(wind_V)
         
