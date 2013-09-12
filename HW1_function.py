@@ -24,8 +24,8 @@ def data(filename):
     f = open(filename)
 
     # make an empty list
-    dates = []
-    press = []
+    dates  = []
+    press  = []
     wind_U = []
     wind_V = []
 
@@ -52,8 +52,8 @@ def data(filename):
      
     
     # change data as array
-    dates = np.array(dates)
-    press = np.array(press)
+    dates  = np.array(dates)
+    press  = np.array(press)
     wind_U = np.array(wind_U)
     wind_V = np.array(wind_V)
 
