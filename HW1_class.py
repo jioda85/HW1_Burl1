@@ -1,43 +1,37 @@
-"""
-HW1_class: Class to read burl1 historical wind data
-================================================================================
-
-" class data "
-: class to read burl1 datafile and return the dates, wind, press information
-
-  Input : 'filename' (e.g. 'burl1_2011.txt')
-  Output:  self.dates = dates in a datetime format (yr, mon, day, hr, min)
-           self.wind  = wind vector (m/sec)  ([0]: Eastward, [1]: Northward) 
-           self.press = sea-level pressure (hPa)
-           
-  Example: 
-      >> from HW1_class import data
-      >> result = data('burl1_2011.txt')
-      >> result.dates
-      >> result.wind
-      >> result.press     
-         
-by InOk Jun
-OCNG 658, Fall 2013
-"""
-
+# ==============================================================================
+# HW1_class: Class to read burl1 historical wind data
+# ==============================================================================
+# by InOk Jun
+# OCNG 658, Fall 2013
+# ==============================================================================
 
 # import statement
 import numpy as np
-import matplotlib.pyplot as plt
 from datetime import datetime
 
-# class to read burl1 datafile and return the dates, wind, press information
-# Input : 'filename' (e.g. 'burl1_2011.txt')
-# Output:  self.dates = dates in a datetime format (yr, mon, day, hr, min)
-#          self.wind  = wind vector (m/sec)  ([0]: Eastward, [1]: Northward) 
-#          self.press = sea-level pressure (hPa)
+class data():
+    '''
+    class to read burl1 datafile and return the dates, wind, press information
+    
+    Input : 'filename' (e.g. 'burl1_2011.txt')
+    Output:  self.dates = dates in a datetime format (yr, mon, day, hr, min)
+    self.wind  = wind vector (m/sec)  ([0]: Eastward, [1]: Northward)
+    self.press = sea-level pressure (hPa)
+    
+    Example:
+    >> from HW1_class import data
+    >> result = data('burl1_2011.txt')
+    >> result.dates
+    >> result.wind
+    >> result.press
+    '''
     
 
-class data():
-
     def __init__(self, filename):
-        f = open(filename)
+        
+        self.filename = filename
+        f = open(self.filename)
+        
         dates = []
         dirct = []
         speed = []
