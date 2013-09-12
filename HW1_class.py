@@ -25,17 +25,16 @@ class data():
     >> result.wind
     >> result.press
     '''
-    
 
     def __init__(self, filename):
         
         self.filename = filename
         f = open(self.filename)
         
-        dates = []
-        dirct = []
-        speed = []
-        press = []
+        dates  = []
+        press  = []
+        wind_U = []
+        wind_V = []
 
         for line in f.readlines()[2:]:
             data = line.split()
@@ -44,28 +43,23 @@ class data():
             day    = int(data[2])
             hour   = int(data[3])
             minute = int(data[4])
-            dates.append( datetime(year, month, day, hour, minute) )
-            dirct.append( float(data[5]) )
-            speed.append( float(data[6]) )    
-            press.append( float(data[12]) )
-    
-        dates = np.array(dates)
-        speed = np.array(speed)
-        dirct = np.array(dirct)
-        press = np.array(press)
-        
-        for i in range(len(dirct)):
-            if dirct[i] == 999  : dirct[i] = np.Nan
-            elif dirct[i] >= 180: dirct[i] = dirct[i] - 180
-            else:                 dirct[i] = dirct[i] + 180
             
-        wind = - speed * (np.sin(dirct * np.pi/180.), np.cos(dirct * np.pi/180.))
+            dates.append( datetime(year, month, day, hour, minute) )  
+            press.append( float(data[12]) )
+            wind_U.append( -float(data[6]) * np.sin(float(data[5]) * np.pi/180.) )
+            wind_V.append( -float(data[6]) * np.cos(float(data[5]) * np.pi/180.) )
+
+        dates = np.array(dates)
+        press = np.array(press)
+        wind_U = np.array(wind_U)
+        wind_V = np.array(wind_V)
         
         print 'dates        = ', dates
         print 'wind (east)  = ', wind[0]
         print 'wind (north) = ', wind[1]
         print 'press        = ', press
     
-        self.dates = dates
-        self.wind  = wind
-        self.press = press
+        self.dates  = dates
+        self.wind_U = wind_U
+        self.wind_V = wind_V
+        self.press  = press
