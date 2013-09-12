@@ -37,7 +37,7 @@ class data():
         wind_V = []
 
         for line in f.readlines()[2:]:
-            data = line.split()
+            data   = line.split()
             year   = int(data[0])
             month  = int(data[1])
             day    = int(data[2])
