@@ -53,11 +53,6 @@ class data():
         press  = np.array(press)
         wind_U = np.array(wind_U)
         wind_V = np.array(wind_V)
-        
-        print 'dates        = ', dates
-        print 'wind (east)  = ', wind_U
-        print 'wind (north) = ', wind_V
-        print 'press        = ', press
     
         self.dates  = dates
         self.wind_U = wind_U
@@ -69,3 +64,7 @@ class data():
 if __name__ == "__main__":   
     result = data('./burl1_2011.txt')
     print "Created 'result', an instance of class 'data' with 'date', 'pressure', 'wind_U' and 'wind_V' as attributes." 
+    print 'dates        = ', result.dates
+    print 'wind (east)  = ', result.wind_U
+    print 'wind (north) = ', result.wind_V
+    print 'press        = ', result.press
