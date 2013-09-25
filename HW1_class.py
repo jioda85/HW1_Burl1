@@ -62,7 +62,7 @@ class data():
 
 		
 if __name__ == "__main__":   
-    result = data('./burl1_2011.txt')
+    result = data('burl1_2011.txt')
     print "Created 'result', an instance of class 'data' with 'date', 'pressure', 'wind_U' and 'wind_V' as attributes." 
     print 'dates        = ', result.dates
     print 'wind (east)  = ', result.wind_U
